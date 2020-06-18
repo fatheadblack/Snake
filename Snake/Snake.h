@@ -18,7 +18,8 @@ public:
 	//Variables
 	bool died;
 
-
+	enum direction { RIGHT = 1, LEFT, UP, DOWN };
+	direction dir = RIGHT;
 	//Functions
 	//void drawSnake();
 	void updateSnake();
@@ -27,15 +28,16 @@ public:
 	void checkTail();
 	int getxposition();
 	int getyposition();
+	
 	void render(sf::RenderTarget& target);
 	std::list<Block>::iterator getSnakebody();
 
 private:
 
 
-	enum direction {RIGHT = 1, LEFT, UP, DOWN};
 	
-	direction dir = RIGHT;
+	
+	
 	std::list<Block> snakebody;
 	std::list<Block>::iterator it;
 	int x_position;

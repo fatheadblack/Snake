@@ -77,6 +77,36 @@ void Game::updatePollEvents()
 			{
 				
 			}
+
+			if (event.key.code == sf::Keyboard::Right)
+			{
+
+				snake->dir = Snake::direction::RIGHT;
+
+			}
+
+			if (event.key.code == sf::Keyboard::Left)
+			{
+				
+				snake->dir = Snake::direction::LEFT;
+				
+
+			}
+
+			if (event.key.code == sf::Keyboard::Up)
+			{
+
+				snake->dir = Snake::direction::UP;
+
+
+			}
+
+			if (event.key.code == sf::Keyboard::Down)
+			{
+
+				snake->dir = Snake::direction::DOWN;
+
+			}
 		}
 		
 

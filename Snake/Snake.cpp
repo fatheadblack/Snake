@@ -68,3 +68,4 @@ int Snake::getyposition()
 {
 	return y_position;
 }
+
