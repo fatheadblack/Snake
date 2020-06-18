@@ -3,7 +3,7 @@
 
 #include"Block.h"
 
-#include<list>
+#include<vector>
 
 
 class Snake
@@ -17,6 +17,7 @@ public:
 
 	//Variables
 	bool died;
+	int snakesize;
 
 	enum direction { RIGHT = 1, LEFT, UP, DOWN };
 	direction dir = RIGHT;
@@ -24,13 +25,16 @@ public:
 	//void drawSnake();
 	void updateSnake();
 	void moveSnake();
+	void growSnake();
+
 	void checkWalls();
 	void checkTail();
+
 	int getxposition();
 	int getyposition();
 	
 	void render(sf::RenderTarget& target);
-	std::list<Block>::iterator getSnakebody();
+	std::vector<Block>::iterator getSnakebody();
 
 private:
 
@@ -38,8 +42,9 @@ private:
 	
 	
 	
-	std::list<Block> snakebody;
-	std::list<Block>::iterator it;
+	std::vector<Block> snakebody;
+	std::vector<Block>::iterator it1;
+	std::vector<Block>::iterator it2;
 	int x_position;
 	int y_position;
 	

@@ -40,9 +40,6 @@ void Game::initSnake()
 	snake = new Snake(600,450);
 
 
-
-	//rect.setPosition(snake->getxposition(), snake->getyposition);
-
 }
 
 
@@ -52,8 +49,9 @@ void Game::update()
 {
 
 	updatePollEvents();
-	snake->updateSnake();
 	snake->moveSnake();
+	snake->updateSnake();
+	
 
 
 }

@@ -6,9 +6,27 @@ Snake::Snake(int xpos, int ypos)
 
 	x_position = xpos;
 	y_position = ypos;
+	snakesize = 0;
+
+	snakebody.push_back(Block(30, 30, this->getxposition(), this->getyposition(), snakesize));
+	snakesize++;
+	snakebody.push_back(Block(30, 30, this->getxposition()-30, this->getyposition(), snakesize));
+	snakesize++;
+	snakebody.push_back(Block(30, 30, this->getxposition()-60, this->getyposition(), snakesize));
+	snakesize++;
+
+
+	snakebody.push_back(Block(30, 30, this->getxposition() -90 , this->getyposition(), snakesize));
+	snakesize++;
+	snakebody.push_back(Block(30, 30, this->getxposition() - 120, this->getyposition(), snakesize));
+	snakesize++;
+	snakebody.push_back(Block(30, 30, this->getxposition() - 150, this->getyposition(), snakesize));
+	snakesize++;
+
+
+
+	it1 = snakebody.begin();
 	
-	snakebody.push_back(Block(30, 30, this->getxposition(), this->getyposition()));
-	it = snakebody.begin();
 	
 	
 	
@@ -16,17 +34,27 @@ Snake::Snake(int xpos, int ypos)
 
 void Snake::render(sf::RenderTarget& target)
 {
-	target.draw(*it->getBlock());
+	for (it1 = snakebody.begin(); it1 != snakebody.end(); ++it1)
+	target.draw(*it1->getBlock());
 }
 
-std::list<Block>::iterator Snake::getSnakebody()
+std::vector<Block>::iterator Snake::getSnakebody()
 {
-	return std::list<Block>::iterator();
+	return std::vector<Block>::iterator();
 }
 
 void Snake::updateSnake()
 {
-	it->setBlock(this->getxposition(), this->getyposition());
+	
+
+	
+	for (int i = snakesize-1; i > 0; --i)
+	{
+		snakebody[0].setBlock(this->getxposition(), this->getyposition());
+		snakebody[i].setBlock(snakebody[i-1].segment.getPosition());
+	
+		
+	}
 
 }
 
@@ -49,6 +77,10 @@ void Snake::moveSnake()
 		break;
 
 	}
+}
+
+void Snake::growSnake()
+{
 }
 
 void Snake::checkWalls()
