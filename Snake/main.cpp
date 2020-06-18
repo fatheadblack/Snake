@@ -1,4 +1,10 @@
 
+/*Simple Attempt at a Snake game clone
+
+Programmed by Fathead 2020*/
+
+
+
 #include "game.h"
 
 
