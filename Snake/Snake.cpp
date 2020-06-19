@@ -7,6 +7,7 @@ Snake::Snake(int xpos, int ypos)
 	x_position = xpos;
 	y_position = ypos;
 	snakesize = 0;
+	
 
 	snakebody.push_back(Block(30, 30, this->getxposition(), this->getyposition(), snakesize));
 	snakesize++;
@@ -23,6 +24,13 @@ Snake::Snake(int xpos, int ypos)
 	snakebody.push_back(Block(30, 30, this->getxposition() - 150, this->getyposition(), snakesize));
 	snakesize++;
 
+
+	snakebody.push_back(Block(30, 30, this->getxposition() - 180, this->getyposition(), snakesize));
+	snakesize++;
+	snakebody.push_back(Block(30, 30, this->getxposition() - 210, this->getyposition(), snakesize));
+	snakesize++;
+	snakebody.push_back(Block(30, 30, this->getxposition() - 240, this->getyposition(), snakesize));
+	snakesize++;
 
 
 	it1 = snakebody.begin();
@@ -46,16 +54,24 @@ std::vector<Block>::iterator Snake::getSnakebody()
 void Snake::updateSnake()
 {
 	
+	
 
 	
-	for (int i = snakesize-1; i > 0; --i)
-	{
-		snakebody[0].setBlock(this->getxposition(), this->getyposition());
-		snakebody[i].setBlock(snakebody[i-1].segment.getPosition());
+	snakebody[0].setBlock(this->getxposition(), this->getyposition());
+	snakebody[0].segment.setFillColor(sf::Color::Yellow);
+
+		for (int i = snakesize - 1; i > 0; --i)
+		{
+			
+			snakebody[i].setBlock(snakebody[i - 1].segment.getPosition());
+
+
+		}
+
 	
 		
-	}
-
+	
+	
 }
 
 void Snake::moveSnake()
@@ -81,10 +97,19 @@ void Snake::moveSnake()
 
 void Snake::growSnake()
 {
+
+	//This is the grow code
+	snakebody.push_back(Block(30, 30, snakebody[snakesize -1].segment.getPosition().x, snakebody[snakesize - 1].segment.getPosition().y ,snakesize));
+	snakesize++;
+
 }
 
 void Snake::checkWalls()
 {
+
+
+
+
 }
 
 void Snake::checkTail()

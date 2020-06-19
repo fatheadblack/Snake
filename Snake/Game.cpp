@@ -1,3 +1,4 @@
+#include<iostream>
 #include "Game.h"
 
 
@@ -7,7 +8,7 @@ Game::Game() {
 
 	initwindow();
 	initSnake();
-
+	//dt = clock.restart().asMicroseconds();
 
 
 }
@@ -21,18 +22,21 @@ Game::~Game()
 
 void Game::run()
 {
-	while (window->isOpen())
+	while (window->isOpen() )
 	{
 		update();
 		render();
+		
 	}
+
+	
 }
 
 void Game::initwindow()
 {
 
 	window = new sf::RenderWindow(sf::VideoMode(1200, 900), "Snake", sf::Style::Close | sf::Style::Titlebar);
-	window->setFramerateLimit(60);
+	window->setFramerateLimit(15);
 }
 
 void Game::initSnake()
@@ -47,12 +51,23 @@ void Game::initSnake()
 // Functions
 void Game::update()
 {
-
-	updatePollEvents();
-	snake->moveSnake();
-	snake->updateSnake();
 	
 
+
+		//std::cout << dt << std::endl;
+
+
+		updatePollEvents();
+		
+		snake->updateSnake();
+
+		snake->moveSnake();
+
+		//dt = clock.restart().asMicroseconds();
+
+	
+
+	
 
 }
 
@@ -73,37 +88,37 @@ void Game::updatePollEvents()
 
 			if (event.key.code == sf::Keyboard::Space)
 			{
-				
+				snake->growSnake();
 			}
 
-			if (event.key.code == sf::Keyboard::Right)
+			if (event.key.code == sf::Keyboard::Right && snake->dir != Snake::direction::LEFT)
 			{
 
 				snake->dir = Snake::direction::RIGHT;
-
+				//snake->growSnake();
 			}
 
-			if (event.key.code == sf::Keyboard::Left)
+			if (event.key.code == sf::Keyboard::Left && snake->dir != Snake::direction::RIGHT)
 			{
 				
 				snake->dir = Snake::direction::LEFT;
-				
+				//snake->growSnake();
 
 			}
 
-			if (event.key.code == sf::Keyboard::Up)
+			if (event.key.code == sf::Keyboard::Up && snake->dir != Snake::direction::DOWN)
 			{
 
 				snake->dir = Snake::direction::UP;
-
+				//snake->growSnake();
 
 			}
 
-			if (event.key.code == sf::Keyboard::Down)
+			if (event.key.code == sf::Keyboard::Down && snake->dir != Snake::direction::UP)
 			{
 
 				snake->dir = Snake::direction::DOWN;
-
+				//snake->growSnake();
 			}
 		}
 		

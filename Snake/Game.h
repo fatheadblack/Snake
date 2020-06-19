@@ -2,7 +2,9 @@
 
 
 #include <SFML/Graphics.hpp>
+#include <chrono>
 #include "Snake.h"
+
 
 
 class Game
@@ -18,10 +20,14 @@ class Game
 
 public:
 
+
+
 	Game();
 
 	virtual ~Game();
 
+	sf::Clock clock;
+	float dt;
 
 	// Functions
 

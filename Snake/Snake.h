@@ -18,6 +18,7 @@ public:
 	//Variables
 	bool died;
 	int snakesize;
+	
 
 	enum direction { RIGHT = 1, LEFT, UP, DOWN };
 	direction dir = RIGHT;
