@@ -6,7 +6,7 @@ Block::Block(int a, int b, int x, int y, int ssize)
 	dims.y = b;
 
 	segment.setSize(dims);
-	segment.setOrigin(15, 15);
+	segment.setOrigin(16, 16);
 	if (ssize == 0)
 		segment.setFillColor(sf::Color::Yellow);
 	else

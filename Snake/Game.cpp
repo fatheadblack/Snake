@@ -22,7 +22,7 @@ Game::~Game()
 
 void Game::run()
 {
-	while (window->isOpen() )
+	while (window->isOpen() ) //&& snake->died == false)
 	{
 		update();
 		render();
@@ -35,8 +35,8 @@ void Game::run()
 void Game::initwindow()
 {
 
-	window = new sf::RenderWindow(sf::VideoMode(1200, 900), "Snake", sf::Style::Close | sf::Style::Titlebar);
-	window->setFramerateLimit(15);
+	window = new sf::RenderWindow(sf::VideoMode(1584, 1264), "Snake", sf::Style::Close | sf::Style::Titlebar);
+	window->setFramerateLimit(18);
 }
 
 void Game::initSnake()
@@ -58,10 +58,14 @@ void Game::update()
 
 
 		updatePollEvents();
+
+		snake->moveSnake();
+
+		
 		
 		snake->updateSnake();
 
-		snake->moveSnake();
+		
 
 		//dt = clock.restart().asMicroseconds();
 
@@ -85,6 +89,10 @@ void Game::updatePollEvents()
 		if (event.type == sf::Event::KeyPressed)
 		{
 
+			if (event.key.code == sf::Keyboard::Escape)
+			{
+				window->close();
+			} 
 
 			if (event.key.code == sf::Keyboard::Space)
 			{
@@ -120,6 +128,10 @@ void Game::updatePollEvents()
 				snake->dir = Snake::direction::DOWN;
 				//snake->growSnake();
 			}
+
+			
+
+
 		}
 		
 

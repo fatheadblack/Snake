@@ -28,11 +28,14 @@ public:
 	void moveSnake();
 	void growSnake();
 
-	void checkWalls();
+	bool checkWalls();
 	void checkTail();
 
 	int getxposition();
 	int getyposition();
+
+	int x_position;
+	int y_position;
 	
 	void render(sf::RenderTarget& target);
 	std::vector<Block>::iterator getSnakebody();
@@ -45,9 +48,8 @@ private:
 	
 	std::vector<Block> snakebody;
 	std::vector<Block>::iterator it1;
-	std::vector<Block>::iterator it2;
-	int x_position;
-	int y_position;
+	//std::vector<Block>::iterator it2;
+	
 	
 
 
