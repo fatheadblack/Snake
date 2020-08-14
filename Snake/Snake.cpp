@@ -47,8 +47,7 @@ void Snake::render(sf::RenderTarget& target)
 	for (int i = 0; i <snakesize; i++)
 		target.draw(*snakebody[i].getBlock());
 
-	/*for (it1 = snakebody.begin(); it1 != snakebody.end(); ++it1)
-	target.draw(*it1->getBlock());*/
+	
 }
 
 std::vector<Block>::iterator Snake::getSnakebody()
